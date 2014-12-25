@@ -1,0 +1,13 @@
+{
+    "name": "bessel",
+    "description": "R bessel functions",
+	"targetType": "library",
+	"homepage": "http://github.com/9il/bessel",
+	"copyright": "Copyright © 1998-2014 Ross Ihaka and the R Core team, 2002-3 The R Foundation, 2014 Ilya Yaroshenko",
+	"authors": [
+		"Ross Ihaka",
+		"R Core team",
+		"Ilya Yaroshenko"
+	],
+	"license": "GNU GPL"
+}
