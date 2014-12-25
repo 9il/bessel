@@ -175,6 +175,7 @@ double besselK(double x, double alpha, Flag!"ExponentiallyScaled" expFlag = Flag
 	nb = 1 + cast(int)floor(alpha);/* b.length-1 <= |alpha| < b.length */
 	alpha -= nb-1;
 	b = cast(double*) calloc(nb, double.sizeof).enforce("besselK allocation error");
+	scope(exit) b.free;
 	besselK(x, alpha, expFlag, b[0..nb], ncalc);
 	if(ncalc != nb) {/* error input */
 	  if(ncalc < 0)
@@ -185,7 +186,6 @@ double besselK(double x, double alpha, Flag!"ExponentiallyScaled" expFlag = Flag
 			 x, alpha+(nb-1)));
 	}
 	x = b[nb-1];
-	free(b);
 	return x;
 }
 
@@ -693,6 +693,7 @@ double besselI(double x, double alpha, Flag!"ExponentiallyScaled" expFlag = Flag
 	nb = 1 + cast(int)na;/* b.length-1 <= alpha < b.length */
 	alpha -= nb-1;
 	b = cast(double*) calloc(nb, double.sizeof).enforce("besselI allocation error");
+	scope(exit) b.free;
 	besselI(x, alpha, expFlag, b[0..nb], ncalc);
 	if(ncalc != nb) {/* error input */
 	if(ncalc < 0)
@@ -703,7 +704,6 @@ double besselI(double x, double alpha, Flag!"ExponentiallyScaled" expFlag = Flag
 				 x, alpha+(nb-1)));
 	}
 	x = b[nb-1];
-	free(b);
 	return x;
 }
 
@@ -1164,6 +1164,7 @@ double besselJ(double x, double alpha)
 	nb = 1 + cast(int)na; /* b.length-1 <= alpha < b.length */
 	alpha -= nb-1;
 	b = cast(double*) calloc(nb, double.sizeof).enforce("besselJ allocation error");
+	scope(exit) b.free;
 	besselJ(x, alpha, b[0..nb], ncalc);
 	if(ncalc != nb) {/* error input */
 		if(ncalc < 0)
@@ -1174,7 +1175,6 @@ double besselJ(double x, double alpha)
 				x, alpha+(nb-1)));
 	}
 	x = b[nb-1];
-	free(b);
 	return x;
 }
 
@@ -1336,10 +1336,9 @@ void besselJ(double x, double alpha, double[] b, ref ptrdiff_t ncalc)
 
 	ncalc = b.length;
 	if(x > xlrg_BESS_IJ) {
-		throw new Exception("besselJ, Range error");
 		/* indeed, the limit is 0,
 		 * but the cutoff happens too early */
-		b[] = 0; /*was double.infinity (really nonsense) */
+		b[] = double.infinity;
 		return;
 	}
 	intx = cast(int) (x);
@@ -1690,13 +1689,12 @@ double besselY(double x, double alpha)
 	}
 	nb = 1+ cast(int)na;/* b.length-1 <= alpha < b.length */
 	alpha -= nb-1;
-	b = cast(double*) calloc(nb, double.sizeof).enforce("besselY allocation error");;;
+	b = cast(double*) calloc(nb, double.sizeof).enforce("besselY allocation error");
+	scope(exit) b.free;
 	besselY(x, alpha, b[0..nb], ncalc);
 	if(ncalc != nb) {/* error input */
-	if(ncalc == -1) {
-		free(b);
+	if(ncalc == -1)
 		return double.infinity;
-	}
 	else if(ncalc < -1)
 			throw new Exception(format("besselY(%g): ncalc (=%ld) != b.length (=%ld); alpha=%g. Arg. out of range?\n",
 				 x, ncalc, nb, alpha));
@@ -1705,7 +1703,6 @@ double besselY(double x, double alpha)
 				 x, alpha+(nb-1)));
 	}
 	x = b[nb-1];
-	free(b);
 	return x;
 }
 
