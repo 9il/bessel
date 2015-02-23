@@ -179,7 +179,7 @@ double besselK(double x, double alpha, Flag!"ExponentiallyScaled" expFlag = Flag
 	besselK(x, alpha, expFlag, b[0..nb], ncalc);
 	if(ncalc != nb) {/* error input */
 	  if(ncalc < 0)
-		throw new Exception(format("besselK(%g): ncalc (=%ld) != b.length (=%ld); alpha=%g. Arg. out of range?\n",
+		throw new Exception(format("besselK(%g): ncalc (=%d) != b.length (=%d); alpha=%g. Arg. out of range?\n",
 			 x, ncalc, nb, alpha));
 	  else
 		throw new Exception(format("besselK(%g,nu=%g): precision lost in result\n",
@@ -215,7 +215,7 @@ double besselK(double x, double alpha, Flag!"ExponentiallyScaled" expFlag, doubl
 	besselK(x, alpha, expFlag, b[0..nb], ncalc);
 	if(ncalc != nb) {/* error input */
 	  if(ncalc < 0)
-		throw new Exception(format("besselK(%g): ncalc (=%ld) != b.length (=%ld); alpha=%g. Arg. out of range?\n",
+		throw new Exception(format("besselK(%g): ncalc (=%d) != b.length (=%d); alpha=%g. Arg. out of range?\n",
 			 x, ncalc, nb, alpha));
 	  else
 		throw new Exception(format("besselK(%g,nu=%g): precision lost in result\n",
@@ -697,7 +697,7 @@ double besselI(double x, double alpha, Flag!"ExponentiallyScaled" expFlag = Flag
 	besselI(x, alpha, expFlag, b[0..nb], ncalc);
 	if(ncalc != nb) {/* error input */
 	if(ncalc < 0)
-			throw new Exception(format("besselI(%g): ncalc (=%ld) != b.length (=%ld); alpha=%g. Arg. out of range?\n",
+			throw new Exception(format("besselI(%g): ncalc (=%d) != b.length (=%d); alpha=%g. Arg. out of range?\n",
 				 x, ncalc, nb, alpha));
 	else
 			throw new Exception(format("besselI(%g,nu=%g): precision lost in result\n",
@@ -742,7 +742,7 @@ double besselI(double x, double alpha, Flag!"ExponentiallyScaled" expFlag, doubl
 	besselI(x, alpha, expFlag, b[0..nb], ncalc);
 	if(ncalc != nb) {/* error input */
 	if(ncalc < 0)
-			throw new Exception(format("besselI(%g): ncalc (=%ld) != b.length (=%ld); alpha=%g. Arg. out of range?\n",
+			throw new Exception(format("besselI(%g): ncalc (=%d) != b.length (=%d); alpha=%g. Arg. out of range?\n",
 				 x, ncalc, nb, alpha));
 	else
 			throw new Exception(format("besselI(%g,nu=%g): precision lost in result\n",
@@ -1168,7 +1168,7 @@ double besselJ(double x, double alpha)
 	besselJ(x, alpha, b[0..nb], ncalc);
 	if(ncalc != nb) {/* error input */
 		if(ncalc < 0)
-			throw new Exception(format("besselJ(%g): ncalc (=%ld) != b.length (=%ld); alpha=%g. Arg. out of range?\n",
+			throw new Exception(format("besselJ(%g): ncalc (=%d) != b.length (=%d); alpha=%g. Arg. out of range?\n",
 				x, ncalc, nb, alpha));
 	 	else
 			throw new Exception(format("besselJ(%g,nu=%g): precision lost in result\n",
@@ -1210,7 +1210,7 @@ double besselJ(double x, double alpha, double[] b)
 	besselJ(x, alpha, b[0..nb], ncalc);
 	if(ncalc != nb) {/* error input */
 	  if(ncalc < 0)
-		throw new Exception(format("besselJ(%g): ncalc (=%ld) != b.length (=%ld); alpha=%g. Arg. out of range?\n",
+		throw new Exception(format("besselJ(%g): ncalc (=%d) != b.length (=%d); alpha=%g. Arg. out of range?\n",
 			 x, ncalc, nb, alpha));
 	  else
 		throw new Exception(format("besselJ(%g,nu=%g): precision lost in result\n",
@@ -1696,7 +1696,7 @@ double besselY(double x, double alpha)
 	if(ncalc == -1)
 		return double.infinity;
 	else if(ncalc < -1)
-			throw new Exception(format("besselY(%g): ncalc (=%ld) != b.length (=%ld); alpha=%g. Arg. out of range?\n",
+			throw new Exception(format("besselY(%g): ncalc (=%d) != b.length (=%d); alpha=%g. Arg. out of range?\n",
 				 x, ncalc, nb, alpha));
 	else /* ncalc >= 0 */
 			throw new Exception(format("besselY(%g,nu=%g): precision lost in result\n",
@@ -1741,7 +1741,7 @@ double besselY(double x, double alpha, double[] b)
 	if(ncalc == -1)
 		return double.infinity;
 	else if(ncalc < -1)
-			throw new Exception(format("besselY(%g): ncalc (=%ld) != b.length (=%ld); alpha=%g. Arg. out of range?\n",
+			throw new Exception(format("besselY(%g): ncalc (=%d) != b.length (=%d); alpha=%g. Arg. out of range?\n",
 				 x, ncalc, nb, alpha));
 	else /* ncalc >= 0 */
 			throw new Exception(format("besselY(%g,nu=%g): precision lost in result\n",
