@@ -32,6 +32,8 @@ import std.string;
 import std.traits;
 import std.typecons;
 
+public import std.typecons: Flag;
+
 /* Documentation that apply to several of the bessel[IJKY] functions */
 
 /* *******************************************************************
