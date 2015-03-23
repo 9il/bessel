@@ -151,7 +151,7 @@ private enum double M_eps_sinc = 2.149e-8;
 private enum double M_SQRT_2dPI = 0.797884560802865355879892119869;
 ///
 double besselK(double x, double alpha,
-	Flag!"ExponentiallyScaled"expFlag = Flag!"ExponentiallyScaled".no)
+	Flag!"ExponentiallyScaled" expFlag = Flag!"ExponentiallyScaled".no)
 {
 	ptrdiff_t nb;
 	ptrdiff_t ncalc;
@@ -191,7 +191,7 @@ unittest
 
 /* modified version of besselK that accepts a work array instead of
 	allocating one. */
-double besselK(double x, double alpha, Flag!"ExponentiallyScaled"expFlag, double[] b)
+double besselK(double x, double alpha, Flag!"ExponentiallyScaled" expFlag, double[] b)
 {
 	ptrdiff_t nb;
 	ptrdiff_t ncalc;
@@ -218,7 +218,7 @@ double besselK(double x, double alpha, Flag!"ExponentiallyScaled"expFlag, double
 	return x;
 }
 
-void besselK(double x, double alpha, Flag!"ExponentiallyScaled"expFlag, double[] b,
+void besselK(double x, double alpha, Flag!"ExponentiallyScaled" expFlag, double[] b,
 	ref ptrdiff_t ncalc)
 {
 	/*-------------------------------------------------------------------
@@ -542,7 +542,7 @@ void besselK(double x, double alpha, Flag!"ExponentiallyScaled"expFlag, double[]
 			ratio = 0;
 			if (ex <= 4.)
 			{
-				/* ----------------------------------------------------------
+			/* ----------------------------------------------------------
 			Calculation of K(ALPHA+1,X)/K(ALPHA,X),  1.0 <= X <= 4.0
 			----------------------------------------------------------*/
 				d2 = trunc(estm[0] / ex + estm[1]);
@@ -702,7 +702,7 @@ void besselK(double x, double alpha, Flag!"ExponentiallyScaled"expFlag, double[]
 
 ///
 double besselI(double x, double alpha,
-	Flag!"ExponentiallyScaled"expFlag = Flag!"ExponentiallyScaled".no)
+	Flag!"ExponentiallyScaled" expFlag = Flag!"ExponentiallyScaled".no)
 {
 	ptrdiff_t nb;
 	ptrdiff_t ncalc;
@@ -751,7 +751,7 @@ unittest
 
 /* modified version of besselI that accepts a work array instead of
 	allocating one. */
-double besselI(double x, double alpha, Flag!"ExponentiallyScaled"expFlag, double[] b)
+double besselI(double x, double alpha, Flag!"ExponentiallyScaled" expFlag, double[] b)
 {
 	ptrdiff_t nb;
 	ptrdiff_t ncalc;
@@ -786,7 +786,7 @@ double besselI(double x, double alpha, Flag!"ExponentiallyScaled"expFlag, double
 	return x;
 }
 
-void besselI(double x, double alpha, Flag!"ExponentiallyScaled"expFlag, double[] b,
+void besselI(double x, double alpha, Flag!"ExponentiallyScaled" expFlag, double[] b,
 	ref ptrdiff_t ncalc)
 {
 	/* -------------------------------------------------------------------
